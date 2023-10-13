@@ -85,6 +85,30 @@ Despite having a fairly equal distribution of the three Supermarket store types 
 
 - Further model tuning and the introduction of additional sales and store data would help to improve the model's predictive ability and provide more utility to stakeholders wishing to increase sales and profitability.
 
+## Coefficient and Feature Analysis
+
+### Analysis of Linear Regression Model Coefficients
+![Linear Regression Coefficients](https://github.com/JKDS87/Sales-Predictions/blob/main/LinearRegressionImportance.png)
+
+We can further examine the features that had the largest impact on determining the predictions of our Linear Regression Model. The features with most predictive power in this instance were indicators of whether the item was found in Supermarkets of type 1, 2, or 3. Those items which were sold in Type 3 had a coefficient of 3,483.73, indicating that being sold in this type of store had a positive impact on projected sales of $3,483.73. Similarly, items in Supermarket types 1 and 2 experienced a positive impact of $2,001.71 and $1,672.55, respectively.
+
+This is in line with previous findings that items found in Supermarket Type 3 locations performed better than others, and had greater sales numbers.
+
+### Analysis of Random Forest Model Feature Importance
+![Random Forest Feature Importance](https://github.com/JKDS87/Sales-Predictions/blob/main/RandomForestImportance.png)
+
+Our Random Forest Model found the most predictive features to be, in order of importance:
+- Item Max Retail Price
+- Being sold in Grocery Stores
+- Being sold in Supermarket Type 3 Stores
+- Item visibility on shelves
+- Year of outlet establishment
+
+ Upon further visualization and inspection, the maximum retail price, item visibility, and placement in Type 3 Supermarkets all had positive impacts on the sales of items. Placement in Grocery stores was shown to have a net negative impact on the sales prices; the establishment year of the store in question also had a negative impact, although this difference was rather small. 
+ 
+ The 'Importance' ranking along the X-axis shows up the percentage each individual feature had on the overall sales, with the maximum sale price having the largest, accounting for over 50% of the models prediction on overall sales figures. The establisment year, although in the top 5 features influencing price, still accounted for well below 10% of the overall prediction, which is in line with the very small negative trend observed in visualizations.
+
+ 
 
 ### For further information
 
