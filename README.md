@@ -1,52 +1,91 @@
-# Title that recommends an action
-## Subtitle describing the analysis 
+# Methods for Increasing Retail Sales 
 
-**Author**: 
+**Author**: Matthew Malueg
+
+## Using Sales and Outlet Store Data to Drive Sales Growth and Increase Profitability
+
+Retail outlets can be a competitive market space, even for established companies. With the rise of online shopping and services in recent decades, these challenges will only continue to increase. Using available data on current sales, store locations and types, and other store and item metrics, retailers can aim to increase their market share and drive increased sales at their locations.
 
 ### Business problem:
 
-Here is where you state the business problem you were trying to solve
+A retail chain is searching for insights on how to increase overall sales at it's various locations.
 
 
 ### Data:
-Data can include source and high-level description (e.g. # obs)
+The source for the sales data to be analzyed can be found here: 
+
+https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-iii/
+
+This dataset contains 8,523 entries on item sales with 12 features for each item; however, some of these features held little predictive value and were removed in the course of analysis.
 
 
 ## Methods
-- Data preparation steps with explanation and justification for choices
-- 
+- Preprocessing measures before being analyzed:
+  - Repeated prefixes and suffixes were removed from numerical data features to allow analysis of numeric data.
+  - Classification labels that were formatted differently but otherwise equal in meaning were made uniform.
+  - Missing values were addressed with appropriate placeholders or imputed values (more on this below).
+  - Features with little predictive value were removed, such as the unique item ID.
+
+- After cleaning, features were converted into numeric data for analysis by machine learning models.
+  - There was minimal missing data in the given dataset. Missing numerical data were imputed with median values, and all numeric values were then scaled allowing standardized comparisons. This prevented features with drastically different value ranges unintentionally being given different importance.
+  - Missing non-numerical data were given a placeholder value of 'NA' to allow analysis by the learning model, without discarding otherwise relevant rows of data.
+
+- Analysis of data
+  - Individual features were visualized and explored to find potentially relevant and actionable trends and insights.
+  - After preparing and visualizing the dataset, it was analyzed using both Linear Regression and Random Forest Models.
+  - The Random Forest Model was further tuned to test for possible increases in predictive power.
 
 ## Results
 
-### Here are examples of how to embed images from your sub-folder
+### Average Sales Based upon Outlet Store Type
+![Item sales by type of outlet](https://github.com/JKDS87/Prediction-of-Product-Sales/assets/57232899/530fc5c5-3231-460d-afee-aedcded9afe0)
+
+> - The best performing stores were classified as Type 3 Supermarkets, and consistently produced the highest number of sales for individual items. The bulk of sales at Type 3 stores surpassed those Type 1 and Type 2 stores.
+>
+> - Although Type 1 Supermarkets did have a number of outlier items that performed quite well, with each item selling a high quantity, these outliers were not enough to shift the overall performance of Type 1 stores upward to a comparable degree as Type 3.
+>
+> - Type 2 Supermarkets performed similarly to Type 1, but with fewer outliers on the higher end; these outliers also sold lower quantities than the Type 1 Supermarkets.
+
+Possible conclusions could indicate that Type 1 Supermarkets offer specific or specialty items that are unavailable at other locations, driving the high number of sales of these outlier items. It may be worth focusing more on the sales of these specific items.
 
 
-#### Visual 1 Title
-![sample image](project1_sample_image.png)
 
-> Sentence about visualization.
+### Outlet Store Type Frequency Based upon Location
+![Frequency of store type by location](https://github.com/JKDS87/Prediction-of-Product-Sales/assets/57232899/e0017cec-faeb-4935-aafb-c723ab5d0931)
 
-#### Visual 2 Title
+(To avoid confusion in terminology, 'Location Types' will be refered to as 'Zones')
 
-## Model
+> **Notable differences regarding the distribution of stores were:**
+>
+> - All four Outlet Types could be found in Zone 3, and it had a fairly evenly distribution of each type of Outlet Store - Types 1, 2, 3, and Grocery.
+> 
+> - All three Zones contained Type 1 Supermarkets. They were also the most common Outlet Type, far outnumbering the other three.
+> 
+> - Type 1 Supermarkets were the *only* type found in Zone 2, with a significantly higher number per zone than any other combination.
 
-Describe your final model
+Despite having a fairly equal distribution of the three Supermarket store types in Zone 3, Type 3 Supermarkets generated higher sales overall (seen in the previous image). Stakeholders may consider prioritizing selling items in Type 3 stores for increased sales and profitability.
 
-Report the most important metrics
+## Model Evaluation
 
-Refer to the metrics to describe how well the model would solve the business problem
+- The final model chosen was the updated 'Random Forest Model' after it had been tuned for increased performance. Of the models investigated, it had the best predictive power.
+- Comparing metrics of model performance with training data to performance with real data, metrics indicate it performed as designed.
+- The Root Mean Squared Error of an item's overall sales was calculated to be $1,058.15
+- The R^2 score of the chosen model was 0.594
 
 ## Recommendations:
 
-More of your own text here
+- Although the model performed as designed, it currently has weak predictive power, and should not be relied on with a high degree of confidence for sales predictions.
+
+  - The values being investigated for our stakeholders were the sales of any particular item in their outlet stores. Sales values ranged from $13,086.96 down to $33.29, with a median total of $2,181.29. With an error of $1,058.15, this model still needs work before being very useful to our stakeholders.
+
+  - The R^2 score of 0.594 tells us that our model only accounts for 59.4% of the variance in predictions. 
 
 
 ## Limitations & Next Steps
 
-More of your own text here
+- Further model tuning and the introduction of additional sales and store data would help to improve the model's predictive ability and provide more utility to stakeholders wishing to increase sales and profitability.
 
 
 ### For further information
 
-
-For any additional questions, please contact **email**
+For any additional questions, please contact **Malueg87@gmail.com**
